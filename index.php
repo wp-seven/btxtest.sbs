@@ -1,5 +1,6 @@
 <?php
 include 'includes/load.php';
+global $db, $p_db;
 
 $html = '';
 $error = '';

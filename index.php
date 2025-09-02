@@ -39,6 +39,8 @@ if (isset($_POST['geturl'])) {
     }
 }
 $db->close();
+
+
 ?>
 
 <!DOCTYPE html>

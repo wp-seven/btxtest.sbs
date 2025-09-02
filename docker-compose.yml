@@ -1,0 +1,44 @@
+services:
+  php:
+    build: .
+    container_name: btxtest-php
+    volumes:
+      - .:/var/www/html
+      - ./php.ini:/usr/local/etc/php/php.ini         # основной конфиг PHP
+      - ./xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini   # Xdebug
+    depends_on:
+      - db
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  nginx:
+    image: nginx:latest
+    container_name: btxtest-nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - php
+
+  db:
+    image: mysql:8.0
+    container_name: btxtest-mysql
+    networks:
+      default:
+        aliases:
+          - db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: btxtestdb
+      MYSQL_USER: user
+      MYSQL_PASSWORD: userpassword
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:

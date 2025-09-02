@@ -1,6 +1,6 @@
 <?php
-define('DB_HOST', 'localhost');
-define('DB_USER', 'btxtest');
-define('DB_NAME', 'btxtest');
-define('DB_PASSWORD', 'btxtest!!');
+define('DB_HOST', 'btxtest-mysql');
+define('DB_USER', 'user');
+define('DB_NAME', 'btxtestdb');
+define('DB_PASSWORD', 'userpassword');
 ?>

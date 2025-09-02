@@ -1,7 +1,8 @@
 <?php
 include 'includes/load.php';
 global $db, $p_db;
-
+prr('hi');
+prr('hi2');
 $html = '';
 $error = '';
 $message = '';
